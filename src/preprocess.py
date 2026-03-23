@@ -21,9 +21,19 @@ def preprocess_electricity_demand_data(dataset: pd.DataFrame) -> pd.DataFrame:
     # Keep only 2019–2023 to match weather proxy
     df = df[(df["datetime"] >= "2019-01-01") & (df["datetime"] < "2024-01-01")]
     
+    # columns to drop
     df = df.drop(columns=['date', 'hour'])
     
-     # Sort data
+    # columns to move to front
+    cols_to_front = ["datetime", "date_only"]
+    
+    # Get all other columns that are NOT in the front list
+    other_cols = [c for c in df.columns if c not in cols_to_front]
+    
+    # Reorder the dataframe
+    df = df[cols_to_front + other_cols]
+    
+    # Sort data & reset index
     df = df.sort_values("datetime").reset_index(drop=True)
 
     return df
