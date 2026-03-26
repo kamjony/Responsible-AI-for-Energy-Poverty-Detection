@@ -1,13 +1,13 @@
-from src.prepare_sequences import prepare_lstm_inputs, save_artifacts
+from src.train_autoencoder import run_training
+from src.config import ARTIFACTS_SAVE_PATH, MODEL_SAVE_PATH, PLOTS_SAVE_PATH, EPOCHS, BATCH_SIZE
 
 def main():
-    X_train, X_val, X_test, scaler = prepare_lstm_inputs()
-    
-    save_artifacts(
-        X_train=X_train,
-        X_val=X_val,
-        X_test=X_test,
-        scaler=scaler
+    run_training(
+        input_dir=ARTIFACTS_SAVE_PATH,
+        model_output_dir=MODEL_SAVE_PATH,
+        plot_output_dir=PLOTS_SAVE_PATH,
+        epochs=EPOCHS,
+        batch_size=BATCH_SIZE
     )
     
     
