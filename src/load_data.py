@@ -12,7 +12,7 @@ def load_raw_electricity_demand_data() -> pd.DataFrame:
     return dataset
 
 def load_raw_ontario_proxy_temp_data() -> pd.DataFrame:
-    dataset = pd.read_csv('data/ontario_weather_proxy_2019_2023.csv')
+    dataset = pd.read_csv('data/ontario_weather_proxy_2018_2023.csv')
     print("\nOntario Weather Proxy Data")
     print("Head: \n",  dataset.head()) 
     print("Columns: \n", dataset.columns) 

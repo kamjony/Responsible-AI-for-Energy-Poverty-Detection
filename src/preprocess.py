@@ -18,8 +18,8 @@ def preprocess_electricity_demand_data(dataset: pd.DataFrame) -> pd.DataFrame:
     # # Sort data
     # df = df.sort_values("datetime").reset_index(drop=True)
     
-    # Keep only 2019–2023 to match weather proxy
-    df = df[(df["datetime"] >= "2019-01-01") & (df["datetime"] < "2024-01-01")]
+    # Keep only 2018–2023 to match weather proxy
+    df = df[(df["datetime"] >= "2018-01-01") & (df["datetime"] < "2024-01-01")]
     
     # columns to drop
     df = df.drop(columns=['date', 'hour'])

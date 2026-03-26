@@ -3,11 +3,14 @@ import pandas as pd
 import numpy as np
 import joblib
 from src.config import FEATURE_COL, MASTER_DATASET_PATH, SEQUENCE_LENGTH, ARTIFACTS_SAVE_PATH
+from src.build_master_dataset import build_master_dataset, save_master_dataset
 from sklearn.preprocessing import MinMaxScaler
 
 def load_master_dataset(path: str = MASTER_DATASET_PATH) -> pd.DataFrame:
     if not os.path.exists(path):
-        raise FileNotFoundError(f"Master dataset not found in: {path}")
+        db = build_master_dataset()
+        save_master_dataset(db)
+        # raise FileNotFoundError(f"Master dataset not found in: {path}")
     #Load the merged master dataset
     dataset = pd.read_csv(path)
     
@@ -44,14 +47,14 @@ def check_master_dataset(df: pd.DataFrame) -> None:
 def split_dataset_by_time(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """
     Splitting dataset like below:
-    **Train: 2019-01-01 to 2021-12-31
-    **Validation: 2022-01-01 to 2022-12-31
-    **Test: 2023-01-01 to 2023-12-31
+    **Train: 2018-01-01 to 2020-12-31
+    **Validation: 2021-01-01 to 2021-12-31
+    **Test: 2022-01-01 to 2022-12-31
     """
     
-    train_df = df[(df["datetime"] >= "2019-01-01") & (df["datetime"] < "2022-01-01")].copy()
-    val_df = df[(df["datetime"] >= "2022-01-01") & (df["datetime"] < "2023-01-01")].copy()
-    test_df = df[(df["datetime"] >= "2023-01-01") & (df["datetime"] < "2024-01-01")].copy()
+    train_df = df[(df["datetime"] >= "2018-01-01") & (df["datetime"] < "2021-01-01")].copy()
+    val_df = df[(df["datetime"] >= "2021-01-01") & (df["datetime"] < "2022-01-01")].copy()
+    test_df = df[(df["datetime"] >= "2022-01-01") & (df["datetime"] < "2023-01-01")].copy()
     
     print("\n::Master Dataset split::")
     print("Train shape:", train_df.shape, "| Range:", train_df["datetime"].min(), "to", train_df["datetime"].max())
