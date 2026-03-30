@@ -1,12 +1,11 @@
-from src.detect_anomalies import run_detection
-from src.config import ARTIFACTS_SAVE_PATH, LSTM_SAVED_MODEL_PATH, THRESHOLD_PERCENTILE
+from src.config import *
+from src.aggregate_results import run_aggregation
 
 def main():
-   run_detection(
-       artifacts_dir=ARTIFACTS_SAVE_PATH,
-       model_path=LSTM_SAVED_MODEL_PATH,
-       threshold_percentile=THRESHOLD_PERCENTILE
-   )
+    run_aggregation(
+        anomaly_results_dir=ANOMALY_SAVE_PATH,
+        output_dir=AGGREGATED_RESULTS_SAVE_PATH
+    )
     
     
 

@@ -15,3 +15,6 @@ PLOTS_SAVE_PATH = "outputs/plots"
 #Anomaly
 ANOMALY_SAVE_PATH = "outputs/anomaly_results"
 THRESHOLD_PERCENTILE: float = 95.0
+
+#Aggregated results
+AGGREGATED_RESULTS_SAVE_PATH = "outputs/aggregated_results"
