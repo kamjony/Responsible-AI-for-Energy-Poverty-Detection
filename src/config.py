@@ -18,3 +18,8 @@ THRESHOLD_PERCENTILE: float = 95.0
 
 #Aggregated results
 AGGREGATED_RESULTS_SAVE_PATH = "outputs/aggregated_results"
+
+#Dashboard
+TEST_STRESS_EVENTS_PATH = "outputs/aggregated_results/test_stress_events.csv"
+TEST_MONTHLY_SUMMARY_PATH = "outputs/aggregated_results/test_monthly_summary.csv"
+TEST_TOP_EVENTS_PATH = "outputs/aggregated_results/test_top_stress_events.csv"
